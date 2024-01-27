@@ -1,21 +1,51 @@
 let num1;
 let num2;
 let operator;
+let oppSelected = false;
+//storing the value which appears on screen
 let screenValue;
 
 const numBtns = document.querySelectorAll(".calcBtn");
+const oppBtns = document.querySelectorAll(".oppBtn");
 const screen = document.querySelector("#calcScreen");
+const equals = document.querySelector("#equalsBtn");
 
 //Create the functions that populate the display when you click the number buttons.
 numBtns.forEach((numBtn) => {
   numBtn.addEventListener("click", () => {
-    //for display purposes, we're appending the input value to the screen node
-    const num = document.createElement("text");
-    num.textContent = numBtn.value;
-    screen.appendChild(num);
-    screenValue = screen.textContent;
-    console.log(screenValue);
+    if (oppSelected === false) {
+      //for display purposes, we're appending the input value to the screen node
+      const enteredNum = document.createElement("text");
+      enteredNum.textContent = numBtn.value;
+      screen.appendChild(enteredNum);
+      //the actual value entered on screen
+      num1 = parseInt(screen.textContent);
+      console.log("num1: " + num1);
+    } else {
+      //for display purposes, we're appending the input value to the screen node
+
+      const enteredNum = document.createElement("text");
+      enteredNum.textContent = "";
+      screen.textContent = "";
+      enteredNum.textContent = numBtn.value;
+      screen.appendChild(enteredNum);
+      //the actual value entered on screen
+      num2 = parseInt(screen.textContent);
+      console.log("num2: " + num2);
+    }
   });
+});
+
+oppBtns.forEach((oppBtn) => {
+  oppBtn.addEventListener("click", () => {
+    oppSelected = true;
+    operator = oppBtn.value;
+    console.log(operator);
+  });
+});
+
+equals.addEventListener("click", () => {
+  console.log(operate(operator, num1, num2));
 });
 
 //add
@@ -29,8 +59,10 @@ const subtract = function (a, b) {
 };
 
 //multiply
-const multiply = function (arr) {
-  return arr.reduce((total, index) => total * index);
+//this implies our nums should be stored in an array
+const multiply = function (a, b) {
+  // return arr.reduce((total, index) => total * index);
+  return a * b;
 };
 
 //divide
@@ -39,6 +71,7 @@ const divide = function (a, b) {
 };
 
 //will call a different opperation depending on opperator
+//this will probably be added to the = key
 const operate = (operator, num1, num2) => {
   switch (operator) {
     case "+":
@@ -47,7 +80,7 @@ const operate = (operator, num1, num2) => {
     case "-":
       return subtract(num1, num2);
       break;
-    case "*":
+    case "x":
       return multiply(num1, num2);
       break;
     case "/":
@@ -66,3 +99,9 @@ with the ‘solution’ to the operation. This is the hardest part of the projec
 You need to figure out how to store all the values and call the operate function with them. 
 Don’t feel bad if it takes you a while to figure out the logic.
 */
+
+//user enters num 1
+//user enters num 2
+//user enters the opertor
+//user runs operation (selects equals)
+//result of operation displays on screen
