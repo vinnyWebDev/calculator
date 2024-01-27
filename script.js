@@ -50,3 +50,17 @@ const operate = (operator, num1, num2) => {
       break;
   }
 };
+
+//Event listeners assigned to number buttons
+numBtns.forEach((numBtn) => {
+  numBtn.addEventListener("click", () => {
+    console.log(numBtn.value);
+  });
+});
+
+//event listeners assigned to operator buttons
+oppBtns.forEach((oppBtn) => {
+  oppBtn.addEventListener("click", () => {
+    console.log(oppBtn.value);
+  });
+});
