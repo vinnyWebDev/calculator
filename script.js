@@ -1,9 +1,23 @@
+// PROTOTYPE ONE STATUS //
+/*
+Basic operations work for addition, subtraction, multiplication and division
+BUG: After pressing equals, we can keep adding numbers onto the resulting sollution, this becomes the new num2
+if we then run the operation again it adds this new num2 onto the old num1
+-Should there be a current num variable that becomes the current subject of the opperations?
+
+
+//SEEMS TO BE RESOLVLED BY CURRENT NUM
+BUG: If we have a sum such as 6+4, the result is 10.
+If I then say +2, the result is 8. It adds the new number to the old num1 rather than the sollution number.#
+-Should there be a current num variable that becomes the current subject of the opperations?
+*/
+
 let num1;
 let num2;
 let operator;
 let oppSelected = false;
-//storing the value which appears on screen
-let screenValue;
+let sollution;
+let currentNum;
 
 const numBtns = document.querySelectorAll(".calcBtn");
 const oppBtns = document.querySelectorAll(".oppBtn");
@@ -18,17 +32,17 @@ numBtns.forEach((numBtn) => {
       const enteredNum = document.createElement("text");
       enteredNum.textContent = numBtn.value;
       screen.appendChild(enteredNum);
-      //the actual value entered on screen
-      num1 = parseInt(screen.textContent);
+      currentNum = parseInt(screen.textContent);
+      num1 = currentNum;
       console.log("num1: " + num1);
     } else {
       //for display purposes, we're appending the input value to the screen node
-
       const enteredNum = document.createElement("text");
-      enteredNum.textContent = "";
       screen.textContent = "";
+      enteredNum.textContent = "";
       enteredNum.textContent = numBtn.value;
       screen.appendChild(enteredNum);
+      currentNum = parseInt(screen.textContent);
       //the actual value entered on screen
       num2 = parseInt(screen.textContent);
       console.log("num2: " + num2);
@@ -36,8 +50,10 @@ numBtns.forEach((numBtn) => {
   });
 });
 
+//setting the event listeners on our operator buttons
 oppBtns.forEach((oppBtn) => {
   oppBtn.addEventListener("click", () => {
+    screen.textContent = "";
     oppSelected = true;
     operator = oppBtn.value;
     console.log(operator);
@@ -45,7 +61,16 @@ oppBtns.forEach((oppBtn) => {
 });
 
 equals.addEventListener("click", () => {
-  console.log(operate(operator, num1, num2));
+  screen.textContent = "";
+  sollution = operate(operator, num1, num2);
+  currentNum = sollution;
+  console.log(currentNum);
+  num1 = currentNum;
+
+  console.log("cur: " + currentNum);
+  const screenSollution = document.createElement("text");
+  screenSollution.textContent = sollution;
+  screen.appendChild(screenSollution);
 });
 
 //add
