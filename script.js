@@ -1,4 +1,8 @@
-//PROTOTYPE TWO//
+//PROTOTYPE TWO TODOS//
+/**
+ * After sum is complete user can keep adding numbers to sollution which system takes to mean num2
+ * 2 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
+ */
 
 //variables which will be used during calculation
 let currentNum;
