@@ -1,6 +1,7 @@
 //PROTOTYPE TWO TODOS//
 /**
- * After sum is complete user can keep adding numbers to sollution which system takes to mean num2
+ * Very solid attempt, well done.
+ *
  * 2 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
  */
 
@@ -63,6 +64,9 @@ numBtns.forEach((numBtn) => {
   //we are slecting num1 (current num) because oppSelected is false
   numBtn.addEventListener("click", () => {
     if (oppSelected === false) {
+      console.log("here");
+      currentNum = 0;
+      screenNum.textContent = "";
       screenNum.textContent += numBtn.value;
       screen.appendChild(screenNum);
       currentNum = parseInt(screenNum.textContent);
@@ -93,4 +97,6 @@ equals.addEventListener("click", () => {
   screenNum.textContent = "";
   currentNum = operate(operator, currentNum, num2);
   screenNum.textContent = currentNum;
+  //the operation has been complete, we reset oppSelected to false so a new operation begins if a new numer is selected
+  oppSelected = false;
 });
