@@ -2,6 +2,7 @@
 /**
  * Very solid attempt, well done.
  *
+ * BUG: With current sollution we can only enter a single digit num1 value
  * 2 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
  */
 
@@ -64,9 +65,6 @@ numBtns.forEach((numBtn) => {
   //we are slecting num1 (current num) because oppSelected is false
   numBtn.addEventListener("click", () => {
     if (oppSelected === false) {
-      console.log("here");
-      currentNum = 0;
-      screenNum.textContent = "";
       screenNum.textContent += numBtn.value;
       screen.appendChild(screenNum);
       currentNum = parseInt(screenNum.textContent);
