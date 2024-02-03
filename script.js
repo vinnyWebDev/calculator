@@ -3,11 +3,12 @@
  * Very solid attempt, well done.
  *
  * BUG: With current sollution we can only enter a single digit num1 value
- * 2 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
+ * 12 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
  */
 
 //variables which will be used during calculation
 let currentNum;
+let num1;
 let num2;
 let operator;
 let oppSelected = false;
@@ -67,8 +68,9 @@ numBtns.forEach((numBtn) => {
     if (oppSelected === false) {
       screenNum.textContent += numBtn.value;
       screen.appendChild(screenNum);
-      currentNum = parseInt(screenNum.textContent);
-      console.log("Current Num: " + currentNum);
+      num1 = parseInt(screenNum.textContent);
+      currentNum = num1;
+      console.log("Num1: " + num1);
     }
     //An operator has been selected, oppSelected now true, we move on to num2
     else {
@@ -76,6 +78,9 @@ numBtns.forEach((numBtn) => {
       screen.appendChild(screenNum);
       num2 = parseInt(screenNum.textContent);
       console.log("Num2: " + num2);
+      currentNum = operate(operator, num1, num2);
+      console.log("current num " + currentNum);
+      console.log("num1 " + num1);
     }
   });
 });
@@ -83,7 +88,10 @@ numBtns.forEach((numBtn) => {
 //event listeners assigned to operator buttons
 oppBtns.forEach((oppBtn) => {
   oppBtn.addEventListener("click", () => {
+    //the second operation must happen here??
     oppSelected = true;
+    console.log(currentNum);
+    num1 = currentNum;
     screenNum.textContent = "";
     operator = oppBtn.value;
     console.log(operator);
@@ -93,8 +101,9 @@ oppBtns.forEach((oppBtn) => {
 //event listner for when equals is pressed
 equals.addEventListener("click", () => {
   screenNum.textContent = "";
-  currentNum = operate(operator, currentNum, num2);
   screenNum.textContent = currentNum;
+  //reassign num1 to the result of the evaluation
+  num1 = currentNum;
   //the operation has been complete, we reset oppSelected to false so a new operation begins if a new numer is selected
   oppSelected = false;
 });
