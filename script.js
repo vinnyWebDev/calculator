@@ -2,9 +2,8 @@
 /**
  * Very solid attempt, well done.
  *
- * BUG: With current sollution we can only enter a single digit num1 value
- * 12 + 7 - 5 * 3 = should yield 42, not 36. You have to indidiually run each opperatrion to get that result
- */
+ * Results of operations could display on operator click but then we'd mess up the onscreen number?
+ *  */
 
 //variables which will be used during calculation
 let currentNum;
@@ -21,6 +20,7 @@ const numBtns = document.querySelectorAll(".calcBtn");
 const oppBtns = document.querySelectorAll(".oppBtn");
 const screen = document.querySelector("#calcScreen");
 const equals = document.querySelector("#equalsBtn");
+const clear = document.querySelector("#clearBtn");
 
 //the basic maths operations we will be calling
 //add
@@ -101,9 +101,17 @@ oppBtns.forEach((oppBtn) => {
 //event listner for when equals is pressed
 equals.addEventListener("click", () => {
   screenNum.textContent = "";
-  screenNum.textContent = currentNum;
+  screenNum.textContent = currentNum.toFixed(2);
   //reassign num1 to the result of the evaluation
   num1 = currentNum;
   //the operation has been complete, we reset oppSelected to false so a new operation begins if a new numer is selected
   oppSelected = false;
+});
+
+//event listener for clear buttin
+clear.addEventListener("click", () => {
+  screenNum.textContent = "";
+  currentNum = 0;
+  num1 = 0;
+  num2 = 0;
 });
