@@ -1,5 +1,6 @@
 .calcScreen{
     display: flex;
+    flex-direction: column;
     min-height: 20px;
  
 }
