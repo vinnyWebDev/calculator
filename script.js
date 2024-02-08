@@ -1,7 +1,3 @@
-//PROTOTYPE TWO TODOS//
-/*
- */
-
 //variables which will be used during calculation
 let currentNum;
 let currentResult;
@@ -114,6 +110,7 @@ equals.addEventListener("click", () => {
 //event listener for clear button
 clear.addEventListener("click", () => {
   screenNum.textContent = "";
+  showResult.textContent = "";
   currentNum = 0;
   num1 = 0;
   num2 = 0;
