@@ -11,7 +11,7 @@ let screenNum = document.createElement("text");
 let showResult = document.createElement("text");
 
 //variables referencing nodes in DOM
-const numBtns = document.querySelectorAll(".calcBtn");
+const numBtns = document.querySelectorAll(".numBtn");
 const oppBtns = document.querySelectorAll(".oppBtn");
 const screenTop = document.querySelector("#screenValues");
 const screenBottom = document.querySelector("#screenResults");

@@ -1,5 +1,86 @@
+body{
+    background-color: #e5e5e5;
+}
+
+.calcContainer{
+   max-width: 340px;
+   background-color: #403d3d;
+   border-radius: 4px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 20px;
+
+}
+
 .calcScreen{
     display: flex;
     flex-direction: column;
-    min-height: 20px;
+    align-items: flex-end;
+    font-size: 40px;
+    background-color:rgb(248, 247, 247);
+    border-radius: 4px;
+    width: 310px;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.screenValues{
+    min-height: 50px;
+}
+
+.calcRow{
+    display: flex;
+}
+
+/*Styles general to all buttons*/
+button{
+    border: none;
+    border-radius: 4px;
+    width: 70px;
+    height:70px;
+    font-size: 40px;
+    margin: 5px;
+}
+
+button:active{
+    transform: scale(0.98); 
+}
+
+/*Styles specific to num buttons*/
+.numBtn{
+    background-color:rgb(248, 247, 247);
+}
+
+.numBtn:active{
+    background-color:rgb(210, 207, 207);
+}
+
+/*Styles specific to operator buttons*/
+.oppBtn{
+    background-color:rgb(224, 130, 59);
+}
+
+.oppBtn:active{
+    background-color:rgb(240, 126, 40);
+}
+
+/*Style specific to cancel button*/
+.clearBtn{
+    background-color: rgb(216, 82, 82);
+}
+
+.clearBtn:active{
+    background-color: rgb(207, 58, 58);
+}
+
+/*Style specific to cancel button*/
+.equalsBtn{
+    background-color: rgb(60, 144, 60);
+}
+
+.equalsBtn:active{
+    background-color: rgb(34, 118, 34);
 }
